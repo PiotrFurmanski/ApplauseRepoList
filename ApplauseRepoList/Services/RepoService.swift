@@ -5,26 +5,21 @@
 //  Created by Piotr Furmanski on 16/10/2019.
 //  Copyright © 2019 Piotr Furmanski. All rights reserved.
 //
-//https://api.github.com/users/applauseoss/repos
 
 import Foundation
 
-protocol MusicServiceProtocol: class {
-    func loadData(for place: String, limit: Int, offset: Int,
-                  completion: @escaping (_ placeResponse: PlaceResponse?, _ error: Error?) -> ())
+protocol RepoServiceProtocol: class {
+    func loadData(completion: @escaping (_ repos: [Repo]?, _ error: Error?) -> ())
 }
 
-class MusicService: MusicServiceProtocol {
+class RepoService: RepoServiceProtocol {
     
     private struct Constants {
-        static let limit = "limit"
-        static let offset = "offset"
+        static let apiUrlStr = "https://api.github.com/users/applauseoss/repos"
     }
     
-    func loadData(for place: String, limit: Int, offset: Int,
-                  completion: @escaping (_ placeResponse: PlaceResponse?, _ error: Error?) -> ()) {
-        let apiUrlStr = "http://musicbrainz.org/ws/2/place/?query=\(place)&\(Constants.limit)=\(limit)&\(Constants.offset)=\(offset)&fmt=json"
-        guard let url = URL(string: apiUrlStr) else { return }
+    func loadData(completion: @escaping (_ repos: [Repo]?, _ error: Error?) -> ()) {
+        guard let url = URL(string: Constants.apiUrlStr) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             self?.handleResponse(data: data, response: response, error: error, completion: completion)
@@ -33,7 +28,7 @@ class MusicService: MusicServiceProtocol {
     }
     
     private func handleResponse(data: Data?, response: URLResponse?, error: Error?,
-                                completion: @escaping (_ placeResponse: PlaceResponse?, _ error: Error?) -> ()) {
+                                completion: @escaping (_ repos: [Repo]?, _ error: Error?) -> ()) {
         guard error == nil else {
             completion(nil, error)
             return
@@ -46,8 +41,8 @@ class MusicService: MusicServiceProtocol {
         
         do {
             let decoder = JSONDecoder()
-            let places = try decoder.decode(PlaceResponse.self, from: data)
-            completion(places, nil)
+            let repos = try decoder.decode([Repo].self, from: data)
+            completion(repos, nil)
         } catch let error {
             completion(nil, error)
         }

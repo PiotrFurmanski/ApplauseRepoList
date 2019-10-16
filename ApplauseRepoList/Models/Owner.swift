@@ -11,7 +11,7 @@ import Foundation
 struct Owner: Codable {
     let login: String
     let id: Double
-    let avatarUrl: String
+    let avatarUrl: String?
     
     private enum CodingKeys: String, CodingKey {
         case login

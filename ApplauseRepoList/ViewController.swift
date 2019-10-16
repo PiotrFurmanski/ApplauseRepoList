@@ -10,9 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let service = RepoService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        service.loadData { (repos, error) in
+            print("here")
+        }
     }
 
 

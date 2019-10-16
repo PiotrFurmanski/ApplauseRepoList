@@ -12,9 +12,9 @@ struct Repo: Codable {
     let id: Double
     let name: String
     let isPrivate: Bool
-    let owner: Owner
-    let description: String
-    let license: License
+    let owner: Owner?
+    let description: String?
+    let license: License?
     let starsCount: Double
     let watchersCount: Double
     let language: String

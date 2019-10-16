@@ -10,5 +10,5 @@ import Foundation
 
 struct License: Codable {
     let name: String
-    let url: String
+    let url: String?
 }
