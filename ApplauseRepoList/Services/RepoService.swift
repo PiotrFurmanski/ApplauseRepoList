@@ -9,17 +9,18 @@
 import Foundation
 
 protocol RepoServiceProtocol: class {
-    func loadData(completion: @escaping (_ repos: [Repo]?, _ error: Error?) -> ())
+    func loadData(numberOfRepos: Int, completion: @escaping (_ repos: [Repo]?, _ error: Error?) -> ())
 }
 
 class RepoService: RepoServiceProtocol {
     
     private struct Constants {
         static let apiUrlStr = "https://api.github.com/users/applauseoss/repos"
+        static let numberOfRepos = "?per_page="
     }
     
-    func loadData(completion: @escaping (_ repos: [Repo]?, _ error: Error?) -> ()) {
-        guard let url = URL(string: Constants.apiUrlStr) else { return }
+    func loadData(numberOfRepos: Int, completion: @escaping (_ repos: [Repo]?, _ error: Error?) -> ()) {
+        guard let url = URL(string: "\(Constants.apiUrlStr)\(Constants.numberOfRepos)\(numberOfRepos)" ) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             self?.handleResponse(data: data, response: response, error: error, completion: completion)

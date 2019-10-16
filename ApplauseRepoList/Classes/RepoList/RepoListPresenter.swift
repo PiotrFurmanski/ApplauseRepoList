@@ -17,6 +17,9 @@ protocol RepoListPresenterProtocol: class {
 }
 
 class RepoListPresenter: NSObject, RepoListPresenterProtocol {
+    private struct Constants {
+        static let reposCount = 10
+    }
     var repos = [Repo]()
     
     private weak var delegate: RepoListViewProtocol?
@@ -28,7 +31,7 @@ class RepoListPresenter: NSObject, RepoListPresenterProtocol {
     }
     
     func loadData() {
-        service.loadData { [weak self] (repos, error) in
+        service.loadData(numberOfRepos: Constants.reposCount) { [weak self] (repos, error) in
             guard let strongSelf = self else { return }
             if let repos = repos {
                 strongSelf.repos = repos
