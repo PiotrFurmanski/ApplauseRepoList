@@ -34,8 +34,8 @@ class RepoDetailsPresenter: RepoDetailsPresenterProtocol {
     }
     
     var description: String? {
-        guard let repo = repo else { return nil }
-        return repo.description.isNilOrEmpty ? nil : "Description: \(repo.description!)"
+        guard let repo = repo, let description = repo.description else { return nil }
+        return description.isEmpty ? nil : "Description: \(description)"
     }
     
     var language: String? {
