@@ -20,6 +20,9 @@
 		6F3261E22357A23A001ED84B /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3261E12357A23A001ED84B /* License.swift */; };
 		6FCF73C62357AE2100E36C02 /* RepoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF73C52357AE2100E36C02 /* RepoListCell.swift */; };
 		6FCF73C82357AF1700E36C02 /* RepoListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF73C72357AF1700E36C02 /* RepoListPresenter.swift */; };
+		6FCF73CB2358FC6200E36C02 /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF73CA2358FC6200E36C02 /* RepoDetailsViewController.swift */; };
+		6FCF73CE2359044100E36C02 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF73CD2359044100E36C02 /* String+Extension.swift */; };
+		6FCF73D023590F4B00E36C02 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF73CF23590F4B00E36C02 /* ImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		6F3261E12357A23A001ED84B /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		6FCF73C52357AE2100E36C02 /* RepoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListCell.swift; sourceTree = "<group>"; };
 		6FCF73C72357AF1700E36C02 /* RepoListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListPresenter.swift; sourceTree = "<group>"; };
+		6FCF73CA2358FC6200E36C02 /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
+		6FCF73CD2359044100E36C02 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6FCF73CF23590F4B00E36C02 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				6F3261DB23567A79001ED84B /* RepoService.swift */,
+				6FCF73CF23590F4B00E36C02 /* ImageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -160,6 +167,8 @@
 		6FCF73C32357ADBD00E36C02 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6FCF73CC2359043400E36C02 /* Extensions */,
+				6FCF73C92358FC3800E36C02 /* RepoDetails */,
 				6FCF73C42357ADDC00E36C02 /* RepoList */,
 			);
 			path = Classes;
@@ -173,6 +182,22 @@
 				6FCF73C72357AF1700E36C02 /* RepoListPresenter.swift */,
 			);
 			path = RepoList;
+			sourceTree = "<group>";
+		};
+		6FCF73C92358FC3800E36C02 /* RepoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				6FCF73CA2358FC6200E36C02 /* RepoDetailsViewController.swift */,
+			);
+			path = RepoDetails;
+			sourceTree = "<group>";
+		};
+		6FCF73CC2359043400E36C02 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6FCF73CD2359044100E36C02 /* String+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +338,9 @@
 				6F3261AE23567A30001ED84B /* AppDelegate.swift in Sources */,
 				6F3261E02357A174001ED84B /* Owner.swift in Sources */,
 				6F3261DE23579E72001ED84B /* Repo.swift in Sources */,
+				6FCF73CB2358FC6200E36C02 /* RepoDetailsViewController.swift in Sources */,
+				6FCF73D023590F4B00E36C02 /* ImageService.swift in Sources */,
+				6FCF73CE2359044100E36C02 /* String+Extension.swift in Sources */,
 				6F3261E22357A23A001ED84B /* License.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

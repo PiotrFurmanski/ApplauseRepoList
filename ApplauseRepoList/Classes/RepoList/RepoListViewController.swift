@@ -9,7 +9,10 @@
 import UIKit
 
 class RepoListViewController: UIViewController {
-
+    private struct Constants {
+        static let repoDetails = "repoDetails"
+    }
+    
     @IBOutlet weak var repoListCollectionView: UICollectionView!
     
     private lazy var presenter: RepoListPresenter = {
@@ -26,10 +29,21 @@ class RepoListViewController: UIViewController {
         repoListCollectionView.delegate = presenter
         presenter.loadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == Constants.repoDetails,
+            let repoDetailsVC = segue.destination as? RepoDetailsViewController,
+            let repo = sender as? Repo else { return }
+        repoDetailsVC.repo = repo
+    }
 }
 
 extension RepoListViewController: RepoListViewProtocol {
     func reload() {
         repoListCollectionView.reloadData()
+    }
+    
+    func showDetails(for repo: Repo) {
+        performSegue(withIdentifier: Constants.repoDetails, sender: repo)
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol RepoListViewProtocol: class {
     func reload()
+    func showDetails(for repo: Repo)
 }
 
 protocol RepoListPresenterProtocol: class {
@@ -54,5 +55,9 @@ extension RepoListPresenter: UICollectionViewDataSource, UICollectionViewDelegat
             as? RepoListCell else { return UICollectionViewCell() }
         cell.setup(repo: repos[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.showDetails(for: repos[indexPath.row])
     }
 }

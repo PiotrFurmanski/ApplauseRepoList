@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YHG-Ij-qmB">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-Ge-CHl">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c9k-LT-SJ6">
                                     <size key="itemSize" width="413" height="50"/>
@@ -67,13 +67,114 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7cX-so-mNy"/>
                     <connections>
                         <outlet property="repoListCollectionView" destination="5dc-Ge-CHl" id="LTG-Iu-QPO"/>
+                        <segue destination="tgg-EY-NQd" kind="show" identifier="repoDetails" id="rTG-sY-OH0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="492.75362318840581" y="134.59821428571428"/>
+        </scene>
+        <!--Repo Details View Controller-->
+        <scene sceneID="hJM-eH-ZbK">
+            <objects>
+                <viewController id="tgg-EY-NQd" customClass="RepoDetailsViewController" customModule="ApplauseRepoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2t3-Eu-htu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5DT-4I-juR">
+                                <rect key="frame" x="16" y="108" width="382" height="166"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf0-im-0Bw">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fb-wp-iw3">
+                                        <rect key="frame" x="0.0" y="28.5" width="382" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7J-hr-7hA">
+                                        <rect key="frame" x="0.0" y="57" width="382" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IsPrivate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L25-zn-pRh">
+                                        <rect key="frame" x="0.0" y="85.5" width="382" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBh-84-AIL">
+                                        <rect key="frame" x="0.0" y="114" width="382" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAX-xj-uEO">
+                                        <rect key="frame" x="0.0" y="142.5" width="382" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2iH-H0-PxF">
+                                <rect key="frame" x="16" y="298" width="382" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="238" id="03V-GN-Ul8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vRG-7G-FFZ" firstAttribute="trailing" secondItem="5DT-4I-juR" secondAttribute="trailing" constant="16" id="3he-5W-nku"/>
+                            <constraint firstItem="2iH-H0-PxF" firstAttribute="top" secondItem="5DT-4I-juR" secondAttribute="bottom" constant="24" id="FIb-Cp-WcV"/>
+                            <constraint firstItem="5DT-4I-juR" firstAttribute="top" secondItem="vRG-7G-FFZ" secondAttribute="top" constant="20" id="ZRe-Hi-9VI"/>
+                            <constraint firstItem="2iH-H0-PxF" firstAttribute="leading" secondItem="vRG-7G-FFZ" secondAttribute="leading" constant="16" id="cPW-rb-Daw"/>
+                            <constraint firstItem="vRG-7G-FFZ" firstAttribute="trailing" secondItem="2iH-H0-PxF" secondAttribute="trailing" constant="16" id="m0T-8r-VPG"/>
+                            <constraint firstItem="5DT-4I-juR" firstAttribute="leading" secondItem="vRG-7G-FFZ" secondAttribute="leading" constant="16" id="qt1-NY-XZf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vRG-7G-FFZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="0fb-wp-iw3" id="CRc-cR-ss1"/>
+                        <outlet property="isPrivateLabel" destination="L25-zn-pRh" id="0aT-ob-i0k"/>
+                        <outlet property="languageLabel" destination="R7J-hr-7hA" id="Eax-aO-5UU"/>
+                        <outlet property="licenseLabel" destination="kBh-84-AIL" id="qYv-Et-nip"/>
+                        <outlet property="nameLabel" destination="bf0-im-0Bw" id="InR-rL-Jpj"/>
+                        <outlet property="userImage" destination="2iH-H0-PxF" id="e5J-us-11K"/>
+                        <outlet property="userLabel" destination="vAX-xj-uEO" id="pcn-2S-vEZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4T-NQ-mCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276.8115942028987" y="134.59821428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BfG-B1-eRF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YHG-Ij-qmB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BAd-IC-6LO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ag5-o2-Mii"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NmT-o0-q8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-417.39130434782612" y="134.59821428571428"/>
         </scene>
     </scenes>
 </document>
