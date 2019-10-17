@@ -9,13 +9,16 @@
 import UIKit
 
 class RepoListViewController: UIViewController {
+    
+    typealias RepoPresenterDataSource = RepoListPresenterProtocol & UICollectionViewDataSource & UICollectionViewDelegate
+    
     private struct Constants {
         static let repoDetails = "repoDetails"
     }
     
     @IBOutlet weak var repoListCollectionView: UICollectionView!
     
-    private lazy var presenter: RepoListPresenter = {
+    private lazy var presenter: RepoPresenterDataSource = {
         return RepoListPresenter(service: RepoService(), delegate: self)
     }()
     

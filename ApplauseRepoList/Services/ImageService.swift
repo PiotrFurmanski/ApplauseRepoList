@@ -8,7 +8,11 @@
 
 import Foundation
 
-class ImageService {
+protocol ImageServiceProtocol {
+    func getData(completion: @escaping (Data) -> ())
+}
+
+class ImageService: ImageServiceProtocol {
     let urlString: String
     
     init?(urlString: String?) {

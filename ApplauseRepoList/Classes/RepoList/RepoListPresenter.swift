@@ -15,6 +15,7 @@ protocol RepoListViewProtocol: class {
 
 protocol RepoListPresenterProtocol: class {
     var repos: [Repo] { get }
+    func loadData()
 }
 
 class RepoListPresenter: NSObject, RepoListPresenterProtocol {

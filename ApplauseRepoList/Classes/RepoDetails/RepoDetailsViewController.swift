@@ -11,8 +11,7 @@ import UIKit
 class RepoDetailsViewController: UIViewController {
     
     private struct Constants {
-        static let publicRepo = "Public"
-        static let privateRepo = "Private"
+        static let animationTime = 0.5
     }
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,45 +24,36 @@ class RepoDetailsViewController: UIViewController {
     
     var repo: Repo?
     
-    private lazy var imageService: ImageService? = {
-        return ImageService(urlString: repo?.owner?.avatarUrl)
+    private lazy var presenter: RepoDetailsPresenterProtocol = {
+        return RepoDetailsPresenter(delegate: self,
+                                    imageService: ImageService(urlString: repo?.owner?.avatarUrl),
+                                    repo: repo)
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
-        setupOwnerImage()
+        presenter.setup()
     }
     
     private func setupData() {
-        guard let repo = repo else { return }
-        nameLabel.text = repo.name.isEmpty ? nil : "Name: \(repo.name)"
-        descriptionLabel.text = repo.description.isNilOrEmpty ? nil : "Description: \(repo.description!)"
-        languageLabel.text = repo.language.isEmpty ? nil : "Language: \(repo.language)"
-        isPrivateLabel.text = repo.isPrivate ? Constants.privateRepo : Constants.publicRepo
-        
-        if let license = repo.license {
-            licenseLabel.text =  license.name.isEmpty ? nil : "License: \(license.name)"
-        } else {
-            licenseLabel.text = nil
-        }
-        
-        if let owner = repo.owner {
-            userLabel.text = owner.login
-        } else {
-            userLabel.text = nil
-        }
+        nameLabel.text = presenter.name
+        descriptionLabel.text = presenter.description
+        languageLabel.text = presenter.language
+        isPrivateLabel.text = presenter.isPrivate
+        licenseLabel.text =  presenter.license
+        userLabel.text = presenter.owner
     }
     
-    private func setupOwnerImage() {
-        imageService?.getData(completion: { [weak self] (data) in
-            guard let strongSelf = self else { return }
-            UIView.transition(with: strongSelf.userImage,
-                              duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: { strongSelf.userImage.image = UIImage(data: data) },
-                              completion: nil)
-        })
+}
+
+extension RepoDetailsViewController: RepoDetailsViewProtocol {
+    func setup(imageData: Data) {
+        UIView.transition(with: userImage,
+                          duration: Constants.animationTime,
+                          options: .transitionCrossDissolve,
+                          animations: { self.userImage.image = UIImage(data: imageData) },
+                          completion: nil)
     }
     
 }
