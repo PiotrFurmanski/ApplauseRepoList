@@ -11,6 +11,7 @@ import UIKit
 protocol RepoListViewProtocol: class {
     func reload()
     func showDetails(for repo: Repo)
+    func stopLoadingIndicator()
 }
 
 protocol RepoListPresenterProtocol: class {
@@ -43,6 +44,7 @@ class RepoListPresenter: NSObject, RepoListPresenterProtocol {
             if let repos = repos {
                 strongSelf.repos = repos
                 DispatchQueue.main.async {
+                    strongSelf.delegate?.stopLoadingIndicator()
                     strongSelf.delegate?.reload()
                 }
             }

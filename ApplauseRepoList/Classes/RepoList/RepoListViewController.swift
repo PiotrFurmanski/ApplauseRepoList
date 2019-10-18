@@ -16,6 +16,8 @@ class RepoListViewController: UIViewController {
         static let repoDetails = "repoDetails"
     }
     
+    
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var repoListCollectionView: UICollectionView!
     @IBOutlet weak var searchField: UITextField!
     
@@ -26,12 +28,24 @@ class RepoListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
+        setupTableView()
     }
     
     private func setupData() {
         searchField.delegate = self
         repoListCollectionView.dataSource = presenter
         repoListCollectionView.delegate = presenter
+        presenter.loadData()
+    }
+    
+    private func setupTableView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        repoListCollectionView.refreshControl = refreshControl
+
+    }
+    
+    @objc func refresh() {
         presenter.loadData()
     }
     
@@ -51,6 +65,13 @@ extension RepoListViewController: RepoListViewProtocol {
     func showDetails(for repo: Repo) {
         performSegue(withIdentifier: Constants.repoDetails, sender: repo)
     }
+
+    func stopLoadingIndicator() {
+        loadingIndicator.stopAnimating()
+        repoListCollectionView.refreshControl?.endRefreshing()
+        searchField.text = ""
+        searchField.resignFirstResponder()
+    }
 }
 
 extension RepoListViewController: UITextFieldDelegate {
@@ -62,7 +83,8 @@ extension RepoListViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
     }
 }
