@@ -14,15 +14,20 @@ protocol RepoListViewProtocol: class {
 }
 
 protocol RepoListPresenterProtocol: class {
-    var repos: [Repo] { get }
     func loadData()
+    func filterData(repoName: String)
 }
 
 class RepoListPresenter: NSObject, RepoListPresenterProtocol {
     private struct Constants {
         static let reposCount = 10
     }
-    var repos = [Repo]()
+    var repos = [Repo]() {
+        didSet {
+            fitleredRepos = repos
+        }
+    }
+    var fitleredRepos = [Repo]()
     
     private weak var delegate: RepoListViewProtocol?
     private var service: RepoServiceProtocol
@@ -44,21 +49,27 @@ class RepoListPresenter: NSObject, RepoListPresenterProtocol {
         }
     }
     
+    func filterData(repoName: String) {
+        fitleredRepos = repoName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? repos :
+                        repos.filter({ $0.name.lowercased().contains(repoName.lowercased()) })
+        delegate?.reload()
+    }
+    
 }
 
 extension RepoListPresenter: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return repos.count
+        return fitleredRepos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RepoListCell.self), for: indexPath)
             as? RepoListCell else { return UICollectionViewCell() }
-        cell.setup(repo: repos[indexPath.row])
+        cell.setup(repo: fitleredRepos[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.showDetails(for: repos[indexPath.row])
+        delegate?.showDetails(for: fitleredRepos[indexPath.row])
     }
 }

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-Ge-CHl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="686"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c9k-LT-SJ6">
                                     <size key="itemSize" width="413" height="50"/>
@@ -57,19 +57,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQW-dp-gRV">
+                                <rect key="frame" x="16" y="104" width="382" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iW5-mh-kUU"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5dc-Ge-CHl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DM1-fv-UwD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5dc-Ge-CHl" secondAttribute="bottom" id="Iso-OC-FLA"/>
+                            <constraint firstItem="rQW-dp-gRV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="I4y-D9-6Wb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5dc-Ge-CHl" secondAttribute="bottom" constant="16" id="Iso-OC-FLA"/>
                             <constraint firstItem="5dc-Ge-CHl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UgD-Cq-Ys1"/>
-                            <constraint firstItem="5dc-Ge-CHl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xjr-hG-CLd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rQW-dp-gRV" secondAttribute="trailing" constant="16" id="Zdm-YG-yvR"/>
+                            <constraint firstItem="5dc-Ge-CHl" firstAttribute="top" secondItem="rQW-dp-gRV" secondAttribute="bottom" constant="16" id="aEB-rd-c5I"/>
+                            <constraint firstItem="rQW-dp-gRV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="uB0-qx-qN0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="7cX-so-mNy"/>
                     <connections>
                         <outlet property="repoListCollectionView" destination="5dc-Ge-CHl" id="LTG-Iu-QPO"/>
+                        <outlet property="searchField" destination="rQW-dp-gRV" id="ycx-hc-Nob"/>
                         <segue destination="tgg-EY-NQd" kind="show" identifier="repoDetails" id="rTG-sY-OH0"/>
                     </connections>
                 </viewController>

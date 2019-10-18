@@ -17,6 +17,7 @@ class RepoListViewController: UIViewController {
     }
     
     @IBOutlet weak var repoListCollectionView: UICollectionView!
+    @IBOutlet weak var searchField: UITextField!
     
     private lazy var presenter: RepoPresenterDataSource = {
         return RepoListPresenter(service: RepoService(), delegate: self)
@@ -28,6 +29,7 @@ class RepoListViewController: UIViewController {
     }
     
     private func setupData() {
+        searchField.delegate = self
         repoListCollectionView.dataSource = presenter
         repoListCollectionView.delegate = presenter
         presenter.loadData()
@@ -48,5 +50,19 @@ extension RepoListViewController: RepoListViewProtocol {
     
     func showDetails(for repo: Repo) {
         performSegue(withIdentifier: Constants.repoDetails, sender: repo)
+    }
+}
+
+extension RepoListViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text, let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            presenter.filterData(repoName: updatedText)
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
     }
 }
