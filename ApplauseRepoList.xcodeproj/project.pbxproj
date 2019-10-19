@@ -13,7 +13,6 @@
 		6F3261B523567A34001ED84B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3261B423567A34001ED84B /* Assets.xcassets */; };
 		6F3261B823567A34001ED84B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3261B623567A34001ED84B /* LaunchScreen.storyboard */; };
 		6F3261C323567A34001ED84B /* RepoListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3261C223567A34001ED84B /* RepoListPresenterTests.swift */; };
-		6F3261CE23567A34001ED84B /* ApplauseRepoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3261CD23567A34001ED84B /* ApplauseRepoListUITests.swift */; };
 		6F3261DC23567A79001ED84B /* RepoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3261DB23567A79001ED84B /* RepoService.swift */; };
 		6F3261DE23579E72001ED84B /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3261DD23579E72001ED84B /* Repo.swift */; };
 		6F3261E02357A174001ED84B /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3261DF2357A174001ED84B /* Owner.swift */; };
@@ -55,8 +54,6 @@
 		6F3261C223567A34001ED84B /* RepoListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListPresenterTests.swift; sourceTree = "<group>"; };
 		6F3261C423567A34001ED84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F3261C923567A34001ED84B /* ApplauseRepoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplauseRepoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F3261CD23567A34001ED84B /* ApplauseRepoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplauseRepoListUITests.swift; sourceTree = "<group>"; };
-		6F3261CF23567A34001ED84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F3261DB23567A79001ED84B /* RepoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoService.swift; sourceTree = "<group>"; };
 		6F3261DD23579E72001ED84B /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		6F3261DF2357A174001ED84B /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
@@ -99,7 +96,6 @@
 			children = (
 				6F3261AC23567A30001ED84B /* ApplauseRepoList */,
 				6F3261C123567A34001ED84B /* ApplauseRepoListTests */,
-				6F3261CC23567A34001ED84B /* ApplauseRepoListUITests */,
 				6F3261AB23567A30001ED84B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -132,20 +128,10 @@
 		6F3261C123567A34001ED84B /* ApplauseRepoListTests */ = {
 			isa = PBXGroup;
 			children = (
-				6FA0CF5D235B14650087EAA9 /* RepoListMocks.swift */,
-				6F3261C223567A34001ED84B /* RepoListPresenterTests.swift */,
+				6FA0CF5F235B29670087EAA9 /* RepoListPresenterTests */,
 				6F3261C423567A34001ED84B /* Info.plist */,
 			);
 			path = ApplauseRepoListTests;
-			sourceTree = "<group>";
-		};
-		6F3261CC23567A34001ED84B /* ApplauseRepoListUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6F3261CD23567A34001ED84B /* ApplauseRepoListUITests.swift */,
-				6F3261CF23567A34001ED84B /* Info.plist */,
-			);
-			path = ApplauseRepoListUITests;
 			sourceTree = "<group>";
 		};
 		6F3261E32357A3B2001ED84B /* Models */ = {
@@ -156,6 +142,15 @@
 				6F3261DD23579E72001ED84B /* Repo.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6FA0CF5F235B29670087EAA9 /* RepoListPresenterTests */ = {
+			isa = PBXGroup;
+			children = (
+				6F3261C223567A34001ED84B /* RepoListPresenterTests.swift */,
+				6FA0CF5D235B14650087EAA9 /* RepoListMocks.swift */,
+			);
+			path = RepoListPresenterTests;
 			sourceTree = "<group>";
 		};
 		6FCF73C22357A42700E36C02 /* Services */ = {
@@ -353,7 +348,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3261CE23567A34001ED84B /* ApplauseRepoListUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
