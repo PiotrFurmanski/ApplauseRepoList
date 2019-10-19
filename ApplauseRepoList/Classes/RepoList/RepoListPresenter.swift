@@ -12,6 +12,7 @@ protocol RepoListViewProtocol: class {
     func reload()
     func showDetails(for repo: Repo)
     func stopLoadingIndicator()
+    func show(error: String)
 }
 
 protocol RepoListPresenterProtocol: class {
@@ -41,7 +42,12 @@ class RepoListPresenter: NSObject, RepoListPresenterProtocol {
     func loadData() {
         service.loadData(numberOfRepos: Constants.reposCount) { [weak self] (repos, error) in
             guard let strongSelf = self else { return }
-            if let repos = repos {
+            if let error = error {
+                DispatchQueue.main.async {
+                    strongSelf.delegate?.stopLoadingIndicator()
+                    strongSelf.delegate?.show(error: error.localizedDescription)
+                }
+            } else if let repos = repos {
                 strongSelf.repos = repos
                 DispatchQueue.main.async {
                     strongSelf.delegate?.stopLoadingIndicator()
@@ -64,8 +70,10 @@ extension RepoListPresenter: UICollectionViewDataSource, UICollectionViewDelegat
         return fitleredRepos.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RepoListCell.self), for: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RepoListCell.self),
+                                                            for: indexPath)
             as? RepoListCell else { return UICollectionViewCell() }
         cell.setup(repo: fitleredRepos[indexPath.row])
         return cell
