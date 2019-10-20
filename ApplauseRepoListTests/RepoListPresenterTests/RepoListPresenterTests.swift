@@ -78,5 +78,12 @@ class RepoListPresenterTests: XCTestCase {
         
         XCTAssertEqual(repoListPresenterUnderTest.repos.count, 3)
         XCTAssertEqual(repoListPresenterUnderTest.fitleredRepos.count, 1)
+        
+        expect = expectation(description: "Waiting for filtered results")
+        repoListPresenterUnderTest.filterData(repoName: "")
+        waitForExpectations(timeout: Constants.timeout, handler: nil)
+        
+        XCTAssertEqual(repoListPresenterUnderTest.repos.count, 3)
+        XCTAssertEqual(repoListPresenterUnderTest.fitleredRepos.count, 3)
     }
 }
